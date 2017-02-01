@@ -31,7 +31,7 @@ window.renderStatistics = function (ctx, names, times) {
   var columnHeightMax = 150;
   var columnWidth = 40;
   var columnDistance = 50;
-  var timeMax = -1;
+  var timeMax = 0;
 
   var getTimeMax = function (times) {
     for (var i = 0; i < times.length; i++) {
@@ -42,7 +42,8 @@ window.renderStatistics = function (ctx, names, times) {
     return timeMax;
   };
 
-  var rate = getTimeMax(times) > 0 ? columnHeightMax / getTimeMax(times) : 0;
+  var maxTime = getTimeMax(times);
+  var rate = maxTime > 0 ? columnHeightMax / maxTime : 0;
 
   for (var i = 0; i < names.length; i++) {
     var columnLeft = 130 + (columnDistance + columnWidth)*i;
