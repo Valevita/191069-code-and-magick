@@ -33,10 +33,10 @@ window.renderStatistics = function (ctx, names, times) {
   var columnDistance = 50;
   var timeMax = 0;
 
-  var getTimeMax = function (times) {
-    for (var i = 0; i < times.length; i++) {
-      if (times[i] > timeMax) {
-        timeMax = times[i];
+  var getTimeMax = function (time) {
+    for (var i = 0; i < time.length; i++) {
+      if (time[i] > timeMax) {
+        timeMax = time[i];
       }
     }
     return timeMax;
@@ -46,7 +46,7 @@ window.renderStatistics = function (ctx, names, times) {
   var rate = maxTime > 0 ? columnHeightMax / maxTime : 0;
 
   for (var i = 0; i < names.length; i++) {
-    var columnLeft = 130 + (columnDistance + columnWidth)*i;
+    var columnLeft = 130 + (columnDistance + columnWidth) * i;
     var columnHeight = times[i] * rate;
     drawRect(getColumnColor(names[i]), columnLeft, 250, columnWidth, -columnHeight);
 
