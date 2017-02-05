@@ -3,13 +3,57 @@
 var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = document.querySelector('.setup-close');
+var setupSubmit = document.querySelector('.setup-submit');
+
+var ENTER_KEY_CODE = 13;
+var ESC_KEY_CODE = 27;
+
+var isEventActivated = function (event) {
+  return event.keyCode && event.keyCode === ENTER_KEY_CODE;
+};
+
+var showSetupWindow = function () {
+  setup.classList.remove('invisible');
+  document.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === ESC_KEY_CODE) {
+      setup.classList.add('invisible');
+    }
+  });
+};
+
+var closeSetupWindow = function () {
+  setup.classList.add('invisible');
+};
+
 
 setupOpen.addEventListener('click', function () {
-  setup.classList.remove('invisible');
+  showSetupWindow();
+});
+
+setupOpen.addEventListener('keydown', function (event) {
+  if (isEventActivated(event)) {
+    showSetupWindow();
+  }
 });
 
 setupClose.addEventListener('click', function () {
-  setup.classList.add('invisible');
+  closeSetupWindow();
+});
+
+setupClose.addEventListener('keydown', function (event) {
+  if (isEventActivated(event)) {
+    closeSetupWindow();
+  }
+});
+
+setupSubmit.addEventListener('click', function () {
+  closeSetupWindow();
+});
+
+setupSubmit.addEventListener('keydown', function (event) {
+  if (isEventActivated(event)) {
+    closeSetupWindow();
+  }
 });
 
 var wizard = document.querySelector('#wizard');
