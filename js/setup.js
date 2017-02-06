@@ -2,6 +2,7 @@
 
 var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
+var setupOpenIcon = document.querySelector('.setup-open-icon');
 var setupClose = document.querySelector('.setup-close');
 var setupSubmit = document.querySelector('.setup-submit');
 
@@ -36,6 +37,14 @@ setupOpen.addEventListener('keydown', function (event) {
   }
 });
 
+setupOpenIcon.addEventListener('mousedown', function () {
+  setupOpenIcon.ariaPressed = 'true';
+});
+
+setupOpenIcon.addEventListener('mouseup', function () {
+  setupOpenIcon.ariaPressed = 'false';
+});
+
 setupClose.addEventListener('click', function () {
   closeSetupWindow();
 });
@@ -44,6 +53,14 @@ setupClose.addEventListener('keydown', function (event) {
   if (isEventActivated(event)) {
     closeSetupWindow();
   }
+});
+
+setupClose.addEventListener('mousedown', function () {
+  setupClose.ariaPressed = 'true';
+});
+
+setupClose.addEventListener('mouseup', function () {
+  setupClose.ariaPressed = 'false';
 });
 
 setupSubmit.addEventListener('click', function () {
