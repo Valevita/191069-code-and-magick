@@ -6,12 +6,7 @@ var setupOpenIcon = document.querySelector('.setup-open-icon');
 var setupClose = document.querySelector('.setup-close');
 var setupSubmit = document.querySelector('.setup-submit');
 
-var ENTER_KEY_CODE = 13;
 var ESC_KEY_CODE = 27;
-
-var isEventActivated = function (event) {
-  return event.keyCode && event.keyCode === ENTER_KEY_CODE;
-};
 
 var showSetupWindow = function () {
   setup.classList.remove('invisible');
@@ -31,7 +26,7 @@ setupOpen.addEventListener('click', function () {
 });
 
 setupOpen.addEventListener('keydown', function (event) {
-  if (isEventActivated(event)) {
+  if (window.utils.isEventActivated(event)) {
     showSetupWindow();
   }
 });
@@ -49,7 +44,7 @@ setupClose.addEventListener('click', function () {
 });
 
 setupClose.addEventListener('keydown', function (event) {
-  if (isEventActivated(event)) {
+  if (window.utils.isEventActivated(event)) {
     closeSetupWindow();
   }
 });
@@ -67,7 +62,7 @@ setupSubmit.addEventListener('click', function () {
 });
 
 setupSubmit.addEventListener('keydown', function (event) {
-  if (isEventActivated(event)) {
+  if (window.utils.isEventActivated(event)) {
     closeSetupWindow();
   }
 });
