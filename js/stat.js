@@ -1,15 +1,13 @@
 'use strict';
 
-var getColumnColor = function (name) {
-  if (name === 'Вы') {
-    return 'rgba(255, 0, 0, 1)';
-  }
-  var alphaChannel = (0.1 + 0.9 * Math.random()).toFixed(1);
-  return 'rgba(0, 0, 255,' + alphaChannel + ')';
-};
-
-
-window.renderStatistics = function (ctx, names, times) {
+window.renderStatistics = (function (ctx, names, times) {
+  var getColumnColor = function (name) {
+    if (name === 'Вы') {
+      return 'rgba(255, 0, 0, 1)';
+    }
+    var alphaChannel = (0.1 + 0.9 * Math.random()).toFixed(1);
+    return 'rgba(0, 0, 255,' + alphaChannel + ')';
+  };
 
   var drawRect = function (color, x, y, width, height) {
     ctx.fillStyle = color;
@@ -44,7 +42,6 @@ window.renderStatistics = function (ctx, names, times) {
 
   var maxTime = getTimeMax(times);
   var rate = maxTime > 0 ? columnHeightMax / maxTime : 0;
-
   for (var i = 0; i < names.length; i++) {
     var columnLeft = 130 + (columnDistance + columnWidth) * i;
     var columnHeight = times[i] * rate;
@@ -53,4 +50,4 @@ window.renderStatistics = function (ctx, names, times) {
     drawText('16px PT Mono', 'black', times[i].toFixed(0), columnLeft, 250 - columnHeight - 10);
     drawText('16px PT Mono', 'black', names[i], columnLeft, 270);
   }
-};
+})();
