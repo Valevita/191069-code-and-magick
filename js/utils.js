@@ -22,6 +22,10 @@ window.utils = (function () {
         newColor = getRandomElement(array);
       } while (!newColor || color === newColor);
       return newColor;
+    },
+
+    setElementFocus: function (element) {
+      element.focus();
     }
   };
 })();
